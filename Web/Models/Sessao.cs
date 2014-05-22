@@ -27,19 +27,6 @@ namespace AgileTickets.Web.Models
             }
         }
 
-        // Era usada antes no sistema para avisar o cliente de que
-        // os ingressos estavam acabando!
-        // Hoje nao serve pra nada, mas eh sempre bom ter
-        // um backup guardado! ;)
-        public virtual bool PertoDoLimiteDeSeguranca_NaoUtilizada
-        {
-            get
-            {
-                int limite = 3;
-                return IngressosDisponiveis > limite;
-            }
-        }
-
         public virtual void Reserva(int quantidade)
         {
             // soma quantidade na variavel ingressos reservados
