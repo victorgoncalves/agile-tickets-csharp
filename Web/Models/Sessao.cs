@@ -15,10 +15,7 @@ namespace AgileTickets.Web.Models
 
         public virtual bool PodeReservar(int NumeroDeIngressos)
         {
-            int sobraram = IngressosDisponiveis - NumeroDeIngressos;
-            bool naoTemEspaco = sobraram < 0;
-
-            return !naoTemEspaco;
+            return IngressosDisponiveis >= NumeroDeIngressos ;
         }
 
         public virtual int IngressosDisponiveis
