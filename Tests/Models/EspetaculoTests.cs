@@ -90,5 +90,24 @@ namespace Tests.Models
 
             return sessao;
         }
+
+        [Test]
+        public void CriarSessaoSemanalComInicio5semanasDepoisDoFim()
+        {
+            Espetaculo ivete = new Espetaculo();
+
+            IList<Sessao> resultadoEsperado = new List<Sessao>() { 
+                new Sessao(){ Inicio = DateTime.Today}
+                ,new Sessao(){ Inicio = DateTime.Today.AddDays(7)}
+                ,new Sessao(){ Inicio = DateTime.Today.AddDays(14)}
+                ,new Sessao(){ Inicio = DateTime.Today.AddDays(21)}
+                ,new Sessao(){ Inicio = DateTime.Today.AddDays(28)}
+                ,new Sessao(){ Inicio = DateTime.Today.AddDays(35)}
+            };
+
+            IList<Sessao> resultadoObtido = ivete.CriaSessoes(DateTime.Today, DateTime.Today.AddDays(35), Periodicidade.SEMANAL);
+
+            Assert.AreEqual(resultadoEsperado.Count, resultadoObtido.Count);
+        }
     }
 }

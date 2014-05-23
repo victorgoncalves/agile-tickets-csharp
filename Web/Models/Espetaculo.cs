@@ -36,8 +36,16 @@ namespace AgileTickets.Web.Models
          */
         public virtual IList<Sessao> CriaSessoes(DateTime inicio, DateTime fim, Periodicidade periodicidade)
         {
-            // ALUNO: Não apague esse metodo. Esse sim será usado no futuro! ;)
-            return null;
+            IList<Sessao> sessoes = new List<Sessao>();
+            
+            for (int i = 0; i <= fim.Subtract(inicio).Days  ; i += (int)periodicidade)
+            {
+                sessoes.Add(new Sessao() {
+                    Inicio = inicio.AddDays(i)
+                });
+            }
+
+            return sessoes;
         }
 
         public virtual bool Vagas(int qtd, int min)

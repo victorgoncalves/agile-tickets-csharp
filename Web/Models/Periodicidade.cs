@@ -5,9 +5,9 @@ using System.Web;
 
 namespace AgileTickets.Web.Models
 {
-    public enum Periodicidade
+    public enum Periodicidade : int
     {
-        DIARIA,
-        SEMANAL
+        DIARIA = 1,
+        SEMANAL = 7
     }
 }
