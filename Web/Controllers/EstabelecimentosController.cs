@@ -27,12 +27,12 @@ namespace AgileTickets.Web.Controllers
         [RequiresTransaction]
         public ActionResult Novo(Estabelecimento estabelecimento)
         {
-            var copia = estabelecimento;
-
-            estabelecimentos.Salva(estabelecimento);
-
+            ViewBag.Message = string.Empty;
+            bool success = estabelecimentos.Salva(estabelecimento);
+            if (!success)
+                ViewBag.Message = "Nao inserido, verifque os dados e tente novamente.";
             // redireciona
-            return RedirectToAction("Index");
+            return View("Index", estabelecimentos.Todos());
         }
 
         private Estabelecimento PopulaEstabelecimento() 

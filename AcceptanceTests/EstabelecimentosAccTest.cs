@@ -22,5 +22,18 @@ namespace AcceptanceTests
             Assert.IsTrue(browser.IsTextPresent("Estabelecimento X"));
             Assert.IsTrue(browser.IsTextPresent("Rua Y"));
         }
+
+        [Test]
+        public void NaoDeveAdicionarUmEstabelecimentoComTodosOsCamposEmBranco()
+        {
+            browser.Open("/Estabelecimentos");
+            browser.Type("estabelecimento.nome", "");
+            browser.Type("estabelecimento.endereco", "");
+            browser.Click("adicionar");
+            browser.WaitForPageToLoad("3000");
+
+            Assert.IsTrue(browser.IsTextPresent("Nao inserido"));
+            Assert.IsTrue(browser.IsTextPresent("verifque os dados e tente novamente."));
+        }
     }
 }

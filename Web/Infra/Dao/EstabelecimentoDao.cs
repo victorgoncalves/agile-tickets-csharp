@@ -22,9 +22,15 @@ namespace AgileTickets.Web.Infra.Dao
             return session.CreateCriteria<Estabelecimento>().List<Estabelecimento>();
         }
 
-        public void Salva(Estabelecimento estabelecimento)
+        public bool Salva(Estabelecimento estabelecimento)
         {
-            session.Save(estabelecimento);
+            bool success = false;
+            if (!string.IsNullOrEmpty(estabelecimento.Nome) && !string.IsNullOrEmpty(estabelecimento.Endereco))
+            {
+                session.Save(estabelecimento);
+                success = true;
+            }
+            return success;
         }
     }
 }

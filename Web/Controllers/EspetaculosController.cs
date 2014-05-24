@@ -30,6 +30,7 @@ namespace AgileTickets.Web.Controllers
 
         [RequiresTransaction]
         public ActionResult Novo(Espetaculo espetaculo) {
+
             agenda.Cadastra(espetaculo);
 
             return RedirectToAction("Index");

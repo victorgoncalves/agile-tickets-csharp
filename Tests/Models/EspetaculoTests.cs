@@ -106,7 +106,7 @@ namespace Tests.Models
             };
 
             IList<Sessao> resultadoObtido = ivete.CriaSessoes(DateTime.Today, DateTime.Today.AddDays(35), Periodicidade.SEMANAL);
-
+            
             Assert.AreEqual(resultadoEsperado.Count, resultadoObtido.Count);
         }
     }

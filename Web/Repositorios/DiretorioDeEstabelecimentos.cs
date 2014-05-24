@@ -10,6 +10,6 @@ namespace AgileTickets.Web.Repositorios
     {
         IList<Estabelecimento> Todos();
 
-        void Salva(Estabelecimento estabelecimento);
+        bool Salva(Estabelecimento estabelecimento);
     }
 }
